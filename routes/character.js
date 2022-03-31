@@ -3,7 +3,7 @@ const router = express.Router();
 const Character = require('../models/Character');
 
 // Call All Characters
-router.get('/', (reg, res) => {
+router.get('/', (req, res) => {
   Character.find()
     .then(data => res.status(200).json(data))
     .catch(err => ({ message: err }));
@@ -12,7 +12,9 @@ router.get('/', (reg, res) => {
 // Call Individual Character
 router.get('/:charId', (req, res) => {
   Character.find({ name: req.params.charId })
+  // Character.find({ name: req.params.charId })
     .then(data => res.status(200).json(data))
+    // .then()
     .catch(err => res.status(404).json({ message: err }));
 })
 
@@ -23,7 +25,8 @@ router.post('/', (req, res) => {
     name: req.body.name,
     image: req.body.image,
     stats: req.body.stats,
-    desc: req.body.desc
+    desc: req.body.desc,
+    level: req.body.level
   })
 
   character.save()

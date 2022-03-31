@@ -11,8 +11,16 @@ const CharacterSchema = mongoose.Schema({
     required: false,
   },
   stats: {
-    type: Object,
-    required: true,
+    strength: Number,
+    dexterity: Number,
+    constitution: Number,
+    wisdom: Number,
+    intelligence: Number,
+    charisma: Number,
+  },
+  level: {
+    type: Number,
+    require: true,
   },
   desc: {
     type: String,
